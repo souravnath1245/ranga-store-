@@ -1,4 +1,4 @@
-//=======================Click Handler of search button 
+//=======================Click Handler of search button
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
@@ -37,7 +37,7 @@ const showProducts = (products) => {
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
-  //Update Product Price 
+  //Update Product Price
   updatePrice("price", price);
   // Tex Amount Call
   updateTaxAndCharge();
@@ -92,7 +92,7 @@ const updateTotal = (id) => {
   document.getElementById(id).innerText = grandTotal.toFixed(2);
 };
 
-// Product Detail Information 
+// Product Detail Information
 const details = (id) => {
   // Using Fatch API
   const url = `https://fakestoreapi.com/products/${id}`;
@@ -107,14 +107,14 @@ const detailInformation = (data) => {
   details.textContent = " ";
   div.innerHTML = `
   <div class="card text-center rounded">
-  <img class='w-75 h-50 mx-auto' src="${data.image}" class="card-img-top" alt="...">
+  <img class='w-50 p-4 h-50 mx-auto' src="${data.image}" class="card-img-top" alt="...">
   <h5 class="card-header">Product Details</h5>
   <div class="card-body">
     <h3 class="card-title mb-3"> ${data.title}</h3>
     <p class="card-text">${data.description}</p>
     <h5 class='text-danger'><b>Price :</b> $ ${data.price}</h5>
 
-    <a href="#" class="btn btn-primary">Add to Cart</a>
+    <button  class="btn btn-primary">Add to Cart</button>
   </div>
 </div>
   `;
