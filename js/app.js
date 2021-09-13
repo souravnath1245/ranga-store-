@@ -63,7 +63,7 @@ const updatePrice = (id, value) => {
 
 // set innerText function   -For tax;
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = parseFloat(Math.round(value));
+  document.getElementById(id).innerText = parseFloat(value.toFixed(2));
 };
 
 // update delivery charge and total Tax
