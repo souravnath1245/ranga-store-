@@ -1,3 +1,4 @@
+//=======================Click Handler of search button 
 const loadProducts = () => {
   const url = `https://fakestoreapi.com/products`;
   fetch(url)
@@ -6,11 +7,11 @@ const loadProducts = () => {
 };
 loadProducts();
 
-// show all product in UI
+//=======================show all product in UI
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
-    // I got a problem here
+    //============== I got a problem here
     const image = product.image;
     const allProducts = document.getElementById("all-products");
     allProducts.classList.add("gap-3");
@@ -32,22 +33,23 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
+  //Update Product Price 
   updatePrice("price", price);
-  // Total amout call
-  updateTotal("total", price);
+  // Tex Amount Call
   updateTaxAndCharge();
+  // Total amount call
+  updateTotal("total", price);
   document.getElementById("total-Products").innerText = count;
 };
 
 const getInputValue = (id) => {
-  // const element = document.getElementById(id).innerText;
-  //---------------- I got a problem
   const element = document.getElementById(id).innerText;
+  //---------------- I got a problem
   const converted = parseFloat(element);
-  console.log(converted);
   return converted;
 };
 
@@ -61,7 +63,6 @@ const updatePrice = (id, value) => {
 
 // set innerText function   -For tax;
 const setInnerText = (id, value) => {
-  console.log(id, value);
   document.getElementById(id).innerText = parseFloat(Math.round(value));
 };
 
@@ -82,30 +83,24 @@ const updateTaxAndCharge = () => {
   }
 };
 
-
-//grandTotal update function
+// grandTotal update function
 const updateTotal = (id) => {
   const grandTotal =
     getInputValue("price") +
     getInputValue("delivery-charge") +
     getInputValue("total-tax");
-
-  console.log(
-    getInputValue("price"),
-    getInputValue("delivery-charge"),
-    getInputValue("total-tax"),
-    grandTotal
-  );
-
   document.getElementById(id).innerText = grandTotal.toFixed(2);
 };
 
+// Product Detail Information 
 const details = (id) => {
+  // Using Fatch API
   const url = `https://fakestoreapi.com/products/${id}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => detailInformation(data));
 };
+// Designing Card For Product Details:
 const detailInformation = (data) => {
   const details = document.getElementById("details");
   const div = document.createElement("div");
